@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Loading from "./Loading";
 import classes from "./MyBookings.module.css";
+import sweetAlert from "sweetalert2";
+import { Tag } from "antd";
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState();
@@ -43,9 +45,23 @@ const MyBookings = () => {
       });
       console.log(result);
       setLoading(false);
+      sweetAlert
+        .fire(
+          "Félicitations !",
+          "Votre réservation a bien été annulée",
+          "success"
+        )
+        .then((result) => {
+          window.location.reload();
+        });
     } catch (error) {
       console.log(error);
       setLoading(false);
+      sweetAlert.fire(
+        "Oups !",
+        "Une erreur s'est produite, merci de réessayer",
+        "error"
+      );
     }
   };
 
@@ -68,16 +84,25 @@ const MyBookings = () => {
                   <p>Prix : {booking.totalAmount}</p>
                   <p>
                     Status de la réservation :{" "}
-                    {booking.status === "booked" ? "Confirmée" : "Annulée"}
+                    {booking.status === "booked" ? (
+                      <Tag color="green">Confirmée</Tag>
+                    ) : (
+                      <Tag color="red">Annulée</Tag>
+                    )}
                   </p>
-                  <div className={classes.align}>
-                    <button
-                      className="btn btn-dark"
-                      onClick={() => cancelBooking(booking._id, booking.roomid)}
-                    >
-                      Annuler la réservation
-                    </button>
-                  </div>
+
+                  {booking.status !== "cancelled" && (
+                    <div className={classes.align}>
+                      <button
+                        className="btn btn-dark"
+                        onClick={() =>
+                          cancelBooking(booking._id, booking.roomid)
+                        }
+                      >
+                        Annuler la réservation
+                      </button>
+                    </div>
+                  )}
                 </div>
               );
             })}

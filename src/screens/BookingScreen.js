@@ -22,6 +22,10 @@ const BookingScreen = () => {
   const totalAmount = room.rentperday * totalDays;
 
   useEffect(() => {
+    if (!localStorage.getItem("currentUser")) {
+      window.location.href = "/connexion";
+    }
+
     async function postRoom() {
       try {
         setLoading(true);
@@ -58,7 +62,7 @@ const BookingScreen = () => {
       setLoading(false);
       sweetAlert
         .fire("Félicitations !", "Votre chambre a bien été réservée", "success")
-        .then((result) => (window.location.href = "/bookings"));
+        .then((result) => (window.location.href = "/profil"));
     } catch (error) {
       setLoading(false);
       sweetAlert.fire("Oups...", "Une erreur s'est produite", "error");
