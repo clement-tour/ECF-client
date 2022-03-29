@@ -4,6 +4,7 @@ import AllBookings from "../components/AllBookings";
 import AllRooms from "../components/AllRooms";
 import AllUsers from "../components/AllUsers";
 import AddRoom from "../components/AddRoom";
+import AddHotel from "../components/AddHotel";
 
 const { TabPane } = Tabs;
 
@@ -28,6 +29,9 @@ const AdminScreen = () => {
         </TabPane>
         <TabPane tab="Utilisateurs" key="4">
           <AllUsers />
+        </TabPane>
+        <TabPane tab="Hôtel" key="5">
+          <AddHotel />
         </TabPane>
       </Tabs>
     </div>
