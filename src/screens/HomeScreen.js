@@ -146,8 +146,6 @@ const Homescreen = () => {
       </div>
 
       <div className="row justify-content-center mt-5 ">
-        <h1>Homescreen</h1>
-        <h1>There are {rooms.length} rooms in total</h1>
         {loading ? (
           <Loading />
         ) : (

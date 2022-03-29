@@ -16,7 +16,7 @@ const ProfileScreen = () => {
 
   return (
     <div className="m-4">
-      <Tabs defaultActiveKey="1">
+      <Tabs defaultActiveKey="2">
         <TabPane tab="Profil" key="1">
           <p>Nom : {user.data.name}</p>
           <p>Email : {user.data.email}</p>

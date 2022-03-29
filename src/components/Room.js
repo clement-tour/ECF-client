@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import classes from "./Room.module.css";
 import { Button, Modal, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init({ duration: 1000 });
 
 const Room = ({ room, fromDate, toDate }) => {
   const [show, setShow] = useState(false);
@@ -10,7 +14,7 @@ const Room = ({ room, fromDate, toDate }) => {
   const handleShow = () => setShow(true);
 
   return (
-    <div className={`row p-3 ${classes.boxShadow}`}>
+    <div data-aos="fade-up" className={`row p-3 ${classes.boxShadow}`}>
       <div className="col-md-5">
         <img className={classes.smallImg} src={room.imageurls[0]} alt="room" />
       </div>

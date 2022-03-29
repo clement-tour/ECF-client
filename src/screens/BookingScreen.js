@@ -8,6 +8,11 @@ import Error from "../components/Error";
 import moment from "moment";
 import sweetAlert from "sweetalert2";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init({ duration: 1000 });
+
 const BookingScreen = () => {
   let { roomid, fromDate, toDate } = useParams();
 
@@ -70,49 +75,41 @@ const BookingScreen = () => {
   }
 
   return (
-    <div>
-      <h1>Booking screen {room.name} </h1>
-      <h1>Room id : {roomid}</h1>
-
-      <div className="container m-5">
-        {loading ? (
-          <Loading />
-        ) : error ? (
-          <Error message="Une erreur est survenue, merci de réessayer ultérieurement" />
-        ) : (
-          <div
-            className={`row justify-content-center mt-5 ${classes.boxShadow}`}
-          >
-            <div className="col-md-5"></div>
-            <h1>{room.name}</h1>
-            <img src={room.imageurls[0]} alt={Math.random()} className=""></img>
-            <div className="col-md-5"></div>
-            <div className={classes.textAlignRight}>
-              <h1>Détails de la réservation</h1>
-              <p>
-                Nom :{" "}
-                {JSON.parse(localStorage.getItem("currentUser")).data.name}
-              </p>
-              <p>Du : {fromDate}</p>
-              <p> Au : {toDate}</p>
-              <p>Nombre de personne : {room.maxcount}</p>
-            </div>
-
-            <div className={classes.textAlignRight}>
-              <h2>Montant de la réservation</h2>
-              <p> Nombre de nuits : {totalDays} </p>
-              <p> Prix par nuit : {room.rentperday}</p>
-              <p> Montant total : {totalAmount}</p>
-            </div>
-
-            <div className={classes.textAlignRight}>
-              <button className="btn btn-dark" onClick={bookRoom}>
-                Réserver
-              </button>
-            </div>
+    <div className="container m-5" data-aos="flip-left">
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <Error message="Une erreur est survenue, merci de réessayer ultérieurement" />
+      ) : (
+        <div className={`row justify-content-center mt-5 ${classes.boxShadow}`}>
+          <div className="col-md-5"></div>
+          <h1>{room.name}</h1>
+          <img src={room.imageurls[0]} alt={Math.random()} className=""></img>
+          <div className="col-md-5"></div>
+          <div className={classes.textAlignRight}>
+            <h1>Détails de la réservation</h1>
+            <p>
+              Nom : {JSON.parse(localStorage.getItem("currentUser")).data.name}
+            </p>
+            <p>Du : {fromDate}</p>
+            <p> Au : {toDate}</p>
+            <p>Nombre de personne : {room.maxcount}</p>
           </div>
-        )}
-      </div>
+
+          <div className={classes.textAlignRight}>
+            <h2>Montant de la réservation</h2>
+            <p> Nombre de nuits : {totalDays} </p>
+            <p> Prix par nuit : {room.rentperday}</p>
+            <p> Montant total : {totalAmount}</p>
+          </div>
+
+          <div className={classes.textAlignRight}>
+            <button className="btn btn-dark" onClick={bookRoom}>
+              Réserver
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
