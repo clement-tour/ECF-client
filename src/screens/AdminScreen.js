@@ -34,9 +34,6 @@ const AdminScreen = () => {
         <TabPane tab="Hôtels" key="5">
           <AllHotels />
         </TabPane>
-        <TabPane tab="Ajouter un hôtel" key="§">
-          <AddHotel />
-        </TabPane>
       </Tabs>
     </div>
   );

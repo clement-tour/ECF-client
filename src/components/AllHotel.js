@@ -3,7 +3,8 @@ import axios from "axios";
 import Loading from "./Loading";
 import Error from "./Error";
 import { Button, Modal, Carousel } from "react-bootstrap";
-import Hotel from "./Hotel";
+import HotelManage from "./HotelManage";
+import AddHotel from "./AddHotel";
 
 const AllHotels = () => {
   const [hotels, setHotels] = useState([]);
@@ -60,13 +61,14 @@ const AllHotels = () => {
               </thead>
               <tbody>
                 {hotels.map((hotel) => {
-                  return <Hotel key={hotel._id} hotel={hotel} />;
+                  return <HotelManage key={hotel._id} hotel={hotel} />;
                 })}
               </tbody>
             </table>
           </div>
         )}
       </div>
+      <AddHotel />
     </div>
   );
 };

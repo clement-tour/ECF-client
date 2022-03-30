@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 
 function Navbar() {
@@ -56,9 +56,19 @@ function Navbar() {
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#" onClick={logout}>
-                      Se déconnecter
-                    </a>
+                    {JSON.parse(localStorage.getItem("currentUser")).data
+                      .isAdmin && (
+                      <li>
+                        <a className="dropdown-item" href="/admin">
+                          Administration
+                        </a>
+                      </li>
+                    )}
+                    <li>
+                      <a className="dropdown-item" href="#" onClick={logout}>
+                        Se déconnecter
+                      </a>
+                    </li>
                   </li>
                 </ul>
               </div>
