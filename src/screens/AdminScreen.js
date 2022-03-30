@@ -4,8 +4,8 @@ import AllBookings from "../components/AllBookings";
 import AllRooms from "../components/AllRooms";
 import AllUsers from "../components/AllUsers";
 import AddRoom from "../components/AddRoom";
-import AddHotel from "../components/AddHotel";
-import AllHotels from "../components/AllHotel";
+import AddHotel from "../components/AdminPanel/AddHotel";
+import AllHotels from "../components/AdminPanel/AllHotel";
 
 const { TabPane } = Tabs;
 

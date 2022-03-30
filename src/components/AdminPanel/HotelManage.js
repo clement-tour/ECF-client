@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import classes from "./Room.module.css";
-import { Button, Modal, Carousel } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
@@ -32,7 +30,6 @@ const HotelManage = ({ hotel }) => {
     };
     try {
       setloading(true);
-      const article = { name: name };
 
       const result = await axios.put("/api/hotels/addHotel", newHotel);
       setloading(false);
@@ -61,7 +58,7 @@ const HotelManage = ({ hotel }) => {
       const result = await axios.put("/api/hotels/deletehotel", newHotel);
       setloading(false);
       sweetAlert
-        .fire("Félicitations !", "L'hôtel a bien été modifié", "success")
+        .fire("Félicitations !", "L'hôtel a bien été supprimé", "success")
         .then((result) => (window.location.href = "/admin"));
     } catch (error) {
       console.log(error);

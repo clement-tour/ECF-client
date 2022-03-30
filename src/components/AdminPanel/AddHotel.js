@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import sweetAlert from "sweetalert2";
-import Error from "./Error";
-import Loading from "./Loading";
+import Error from "../Error";
+import Loading from "../Loading";
 import classes from "./AddHotel.module.css";
 
 const AddHotel = () => {

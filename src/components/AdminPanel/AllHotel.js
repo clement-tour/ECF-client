@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Loading from "./Loading";
-import Error from "./Error";
-import { Button, Modal, Carousel } from "react-bootstrap";
+import Loading from "../Loading";
+import Error from "../Error";
 import HotelManage from "./HotelManage";
 import AddHotel from "./AddHotel";
 
@@ -41,6 +39,7 @@ const AllHotels = () => {
   //console.log(bookings.data.length);
   return (
     <div className="row ">
+      <AddHotel />
       <div className="col-md-12">
         {loading ? (
           <Loading />
@@ -68,7 +67,6 @@ const AllHotels = () => {
           </div>
         )}
       </div>
-      <AddHotel />
     </div>
   );
 };

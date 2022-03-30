@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
 import Error from "./Error";
+import AddRoom from "./AddRoom";
+import RoomManage from "./RoomManage";
 
 const AllRooms = () => {
   const [rooms, setRooms] = useState([]);
@@ -37,6 +39,7 @@ const AllRooms = () => {
   //console.log(bookings.data.length);
   return (
     <div className="row ">
+      <AddRoom />
       <div className="col-md-12">
         {loading ? (
           <Loading />
@@ -53,20 +56,12 @@ const AllRooms = () => {
                   <th>Prix par nuit</th>
                   <th>Nombre de place</th>
                   <th>Numéro de téléphone</th>
+                  <th>Mise à jour</th>
                 </tr>
               </thead>
               <tbody>
                 {rooms.map((room) => {
-                  return (
-                    <tr key={room._id}>
-                      <td className="text-break">{room._id}</td>
-                      <td>{room.name}</td>
-                      <td>{room.type}</td>
-                      <td>{room.rentperday}</td>
-                      <td>{room.maxcount}</td>
-                      <td>{room.phonenumber}</td>
-                    </tr>
-                  );
+                  return <RoomManage key={room._id} room={room} />;
                 })}
               </tbody>
             </table>

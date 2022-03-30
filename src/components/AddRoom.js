@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import sweetAlert from "sweetalert2";
 import Error from "./Error";
 import Loading from "./Loading";
+import classes from "./AddRoom.module.css";
 
 const AddRoom = () => {
   const [loading, setLoading] = useState(false);
@@ -39,7 +40,7 @@ const AddRoom = () => {
           "Votre nouvelle chambre a bien été ajouté",
           "success"
         )
-        .then((result) => (window.location.href = "/accueil"));
+        .then((result) => (window.location.href = "/admin"));
     } catch (error) {
       console.log(error);
       setError(true);
@@ -52,14 +53,15 @@ const AddRoom = () => {
     }
   }
   return (
-    <div className="row">
+    <div className="row justify-content-center m-2">
+      <h2 className=" text-center">Ajouter une nouvelle chambre</h2>
       {loading ? (
         <Loading />
       ) : error ? (
         <Error />
       ) : (
         <>
-          <div className="col-md-5">
+          <div className={`col-md-5 p-3 ${classes.boxShadow}`}>
             <input
               type="text"
               className="form-control mt-1"
@@ -111,7 +113,7 @@ const AddRoom = () => {
             />
           </div>
 
-          <div className="col-md-6">
+          <div className={`col-md-5 p-3  ${classes.boxShadow}`}>
             <input
               type="text"
               className="form-control mt-1"
