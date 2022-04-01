@@ -104,7 +104,7 @@ const UserManage = ({ user }) => {
             }}
           />
           <select
-            class="form-select"
+            className="form-select"
             aria-label="Default select example"
             onChange={(e) => {
               console.log(e.target.value);
@@ -112,7 +112,13 @@ const UserManage = ({ user }) => {
             }}
           >
             <option value="visiteur">Visiteur</option>
-            <option value="gérant">Gérant</option>
+            <option value="gérant Saint-Leu">Gérant Saint-Leu</option>
+            <option value="gérant L'Hermitage">Gérant L'Hermitage</option>
+            <option value="gérant La Saline">Gérant La Saline</option>
+            <option value="gérant Lyon">Gérant Lyon</option>
+            <option value="gérant Nice">Gérant Nice</option>
+            <option value="gérant Bordeaux">Gérant Bordeaux</option>
+
             <option value="admin">Admin</option>
           </select>
         </Modal.Body>

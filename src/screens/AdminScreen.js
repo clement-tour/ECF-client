@@ -8,11 +8,17 @@ import AllHotels from "../components/AdminPanel/AllHotel";
 const { TabPane } = Tabs;
 
 const AdminScreen = () => {
+  console.log(JSON.parse(localStorage.getItem("currentUser")).data.status);
+
   useEffect(() => {
     if (
-      !JSON.parse(localStorage.getItem("currentUser")).data.status ===
-        "admin" ||
-      !JSON.parse(localStorage.getItem("currentUser")).data.status === "gérant"
+      !(
+        JSON.parse(localStorage.getItem("currentUser")).data.status ===
+          "admin" ||
+        JSON.parse(localStorage.getItem("currentUser")).data.status.includes(
+          "gérant"
+        )
+      )
     ) {
       window.location.href = "/accueil";
     }
@@ -37,8 +43,9 @@ const AdminScreen = () => {
           </TabPane>
         </Tabs>
       )}
-      {JSON.parse(localStorage.getItem("currentUser")).data.status ===
-        "gérant" && (
+      {JSON.parse(localStorage.getItem("currentUser")).data.status.includes(
+        "gérant"
+      ) && (
         <Tabs defaultActiveKey="1">
           {/* <TabPane tab="Hôtels" key="1">
             <AllHotels />

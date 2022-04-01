@@ -22,7 +22,7 @@ const Room = ({ room, fromDate, toDate }) => {
         <h1 className={classes.roomH1}>{room.name}</h1>
         <p>Nombre de lit : {room.maxcount}</p>
         <p>Téléphone : {room.phonenumber}</p>
-        <p>Type : {room.type}</p>
+        <p>Ville : {room.city}</p>
         <div className={classes.float}>
           {fromDate && toDate && (
             <Link to={`/reservation/${room._id}/${fromDate}/${toDate}`}>

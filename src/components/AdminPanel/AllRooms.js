@@ -35,6 +35,36 @@ const AllRooms = () => {
     fetchRooms();
   }, []);
 
+  const status = JSON.parse(localStorage.getItem("currentUser")).data.status;
+
+  let roomsFilter = rooms;
+
+  switch (status) {
+    case "admin":
+      roomsFilter = rooms;
+      break;
+    case "gérant Saint-Leu":
+      roomsFilter = rooms.filter((room) => room.city === "Saint-Leu");
+      break;
+    case "gérant L'Hermitage":
+      roomsFilter = rooms.filter((room) => room.city === "L'Hermitage");
+      break;
+    case "gérant La Saline":
+      roomsFilter = rooms.filter((room) => room.city === "La Saline");
+      break;
+    case "gérant Lyon":
+      roomsFilter = rooms.filter((room) => room.city === "Lyon");
+      break;
+    case "Nice":
+      roomsFilter = rooms.filter((room) => room.city === "Nice");
+      break;
+    case "Bordeaux":
+      roomsFilter = rooms.filter((room) => room.city === "Bordeaux");
+      break;
+    default:
+      roomsFilter = rooms;
+  }
+
   console.log(rooms);
   //console.log(bookings.data.length);
   return (
@@ -53,7 +83,7 @@ const AllRooms = () => {
                 <tr>
                   <th>Identifiant de la chambre</th>
                   <th>Nom</th>
-                  <th>Type</th>
+                  <th>Ville</th>
                   <th>Prix par nuit</th>
                   <th>Nombre de place</th>
                   <th>Numéro de téléphone</th>
@@ -61,7 +91,7 @@ const AllRooms = () => {
                 </tr>
               </thead>
               <tbody>
-                {rooms.map((room) => {
+                {roomsFilter.map((room) => {
                   return <RoomManage key={room._id} room={room} />;
                 })}
               </tbody>

@@ -16,7 +16,7 @@ const RoomManage = ({ room }) => {
   const [error, seterror] = useState(false);
 
   const [name, setName] = useState(room.name);
-  const [type, setType] = useState(room.type);
+  const [city, setCity] = useState(room.city);
   const [rentperday, setRentperday] = useState(room.rentperday);
   const [maxcount, setMaxcount] = useState(room.maxcount);
 
@@ -26,7 +26,7 @@ const RoomManage = ({ room }) => {
     const newroom = {
       roomid: room._id,
       name,
-      type,
+      city,
       rentperday,
       maxcount,
       phonenumber,
@@ -51,7 +51,7 @@ const RoomManage = ({ room }) => {
     const newroom = {
       roomid: room._id,
       name,
-      type,
+      city,
       rentperday,
       maxcount,
       phonenumber,
@@ -75,7 +75,7 @@ const RoomManage = ({ room }) => {
     <tr key={room._id}>
       <td className="text-break">{room._id}</td>
       <td>{room.name}</td>
-      <td>{room.type}</td>
+      <td>{room.city}</td>
       <td>{room.rentperday}</td>
       <td>{room.maxcount}</td>
       <td>{room.phonenumber}</td>
@@ -105,10 +105,10 @@ const RoomManage = ({ room }) => {
           <input
             type="text"
             className="form-control mt-1"
-            defaultValue={room.type}
+            defaultValue={room.city}
             onChange={(e) => {
               console.log(e.target.value);
-              setType(e.target.value);
+              setCity(e.target.value);
             }}
           />
           <input

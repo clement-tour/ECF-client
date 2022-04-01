@@ -13,7 +13,7 @@ const AddRoom = () => {
   const [maxcount, setmaxcount] = useState("");
   const [description, setdescription] = useState("");
   const [phonenumber, setphonenumber] = useState("");
-  const [type, settype] = useState("");
+  const [city, setCity] = useState("");
   const [image1, setimage1] = useState("");
   const [image2, setimage2] = useState("");
   const [image3, setimage3] = useState("");
@@ -25,7 +25,7 @@ const AddRoom = () => {
       maxcount,
       description,
       phonenumber,
-      type,
+      city,
       imageurls: [image1, image2, image3],
     };
     console.log(newRoom);
@@ -52,6 +52,11 @@ const AddRoom = () => {
       );
     }
   }
+
+  const status = JSON.parse(localStorage.getItem("currentUser")).data.status;
+  const statusSplit = status.split(" ");
+  console.log(statusSplit[1]);
+
   return (
     <div className="row justify-content-center m-2">
       <h2 className=" text-center">Ajouter une nouvelle chambre</h2>
@@ -114,15 +119,41 @@ const AddRoom = () => {
           </div>
 
           <div className={`col-md-5 p-3  ${classes.boxShadow}`}>
-            <input
-              type="text"
-              className="form-control mt-1"
-              placeholder="type"
-              value={type}
-              onChange={(e) => {
-                settype(e.target.value);
-              }}
-            />
+            {status === "admin" ? (
+              <select
+                className="form-select"
+                aria-label="Default select example"
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  setCity(e.target.value);
+                }}
+              >
+                <option value="Saint-Leu">Saint-Leu</option>
+                <option value="L'Hermitage">L'Hermitage</option>
+                <option value="La Saline">La Saline</option>
+                <option value="Lyon">Lyon</option>
+                <option value="Nice">Nice</option>
+                <option value="Bordeaux">Bordeaux</option>
+              </select>
+            ) : (
+              <select
+                value={statusSplit[1]}
+                className="form-select"
+                aria-label="Default select example"
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  setCity(e.target.value);
+                }}
+              >
+                <option value="Saint-Leu">Saint-Leu</option>
+                <option value="L'Hermitage">L'Hermitage</option>
+                <option value="La Saline">La Saline</option>
+                <option value="Lyon">Lyon</option>
+                <option value="Nice">Nice</option>
+                <option value="Bordeaux">Bordeaux</option>
+              </select>
+            )}
+
             <input
               type="text"
               className="form-control mt-1"

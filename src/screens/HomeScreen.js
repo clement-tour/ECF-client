@@ -16,7 +16,7 @@ const Homescreen = () => {
   const [toDate, setToDate] = useState();
   const [roomsCopy, setRoomsCopy] = useState([]);
   const [searchKey, setSearchKey] = useState("");
-  const [type, setType] = useState("all");
+  const [city, setCity] = useState("all");
 
   useEffect(() => {
     async function fetchRooms() {
@@ -111,14 +111,14 @@ const Homescreen = () => {
     setRooms(tempRooms);
   };
 
-  const filterByType = (e) => {
+  const filterByCity = (e) => {
     console.log(e);
     console.log(e.target.value);
-    setType(e.target.value);
+    setCity(e.target.value);
     if (e.target.value !== "all") {
       const tempRooms = roomsCopy.filter(
         (room) =>
-          room.type.toString().toLowerCase() ===
+          room.city.toString().toLowerCase() ===
           e.target.value.toString().toLowerCase()
       );
       setRooms(tempRooms);
@@ -146,10 +146,14 @@ const Homescreen = () => {
           ></input>
         </div>
         <div className="col-sm-4">
-          <select className="form-select" value={type} onChange={filterByType}>
-            <option value="all">All</option>
-            <option value="delux">Delux</option>
-            <option value="non-delux">Non-Delux</option>
+          <select className="form-select" value={city} onChange={filterByCity}>
+            <option value="all">Destination</option>
+            <option value="Saint-Leu">Saint-Leu</option>
+            <option value="L'Hermitage">L'Hermitage</option>
+            <option value="La Saline">La Saline</option>
+            <option value="Lyon">Lyon</option>
+            <option value="Nice">Nice</option>
+            <option value="Bordeaux">Bordeaux</option>
           </select>
         </div>
       </div>

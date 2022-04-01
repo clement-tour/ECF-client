@@ -6,7 +6,7 @@ function Navbar() {
 
   const logout = () => {
     localStorage.removeItem("currentUser");
-    window.location.href = "./connexion";
+    window.location.href = "/connexion";
   };
 
   return (
@@ -64,8 +64,9 @@ function Navbar() {
                         </a>
                       </li>
                     )}
-                    {JSON.parse(localStorage.getItem("currentUser")).data
-                      .status === "gérant" && (
+                    {JSON.parse(
+                      localStorage.getItem("currentUser")
+                    ).data.status.includes("gérant") && (
                       <li>
                         <a className="dropdown-item" href="/admin">
                           Administration
