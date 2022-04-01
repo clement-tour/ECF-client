@@ -57,7 +57,15 @@ function Navbar() {
                   </li>
                   <li>
                     {JSON.parse(localStorage.getItem("currentUser")).data
-                      .isAdmin && (
+                      .status === "admin" && (
+                      <li>
+                        <a className="dropdown-item" href="/admin">
+                          Administration
+                        </a>
+                      </li>
+                    )}
+                    {JSON.parse(localStorage.getItem("currentUser")).data
+                      .status === "gérant" && (
                       <li>
                         <a className="dropdown-item" href="/admin">
                           Administration

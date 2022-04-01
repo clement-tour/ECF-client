@@ -20,7 +20,9 @@ const ProfileScreen = () => {
         <TabPane tab="Profil" key="1">
           <p>Nom : {user.data.name}</p>
           <p>Email : {user.data.email}</p>
-          <p>Administrateur : {user.data.isAdmin ? " oui" : "non"}</p>
+          <p>
+            Administrateur : {user.data.status === "admin" ? " oui" : "non"}
+          </p>
         </TabPane>
         <TabPane tab="Réservations" key="2">
           <MyBookings />

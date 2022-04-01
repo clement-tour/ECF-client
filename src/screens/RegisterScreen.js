@@ -4,6 +4,7 @@ import "./RegisterScreen.css";
 import Loading from "../components/Loading";
 import Success from "../components/Success";
 import Error from "../components/Error";
+import sweetAlert from "sweetalert2";
 
 const RegisterScreen = () => {
   const [name, setname] = useState("");
@@ -31,10 +32,18 @@ const RegisterScreen = () => {
         setname("");
         setcpassword("");
         setpassword("");
+        sweetAlert
+          .fire(
+            "Félicitations !",
+            "Votre inscription a été réalisée avec succès",
+            "success"
+          )
+          .then((result) => (window.location.href = "/connexion"));
       } catch (error) {
         console.log(error);
         setloading(false);
         seterror(true);
+        sweetAlert.fire("Oups...", "Une erreur s'est produite", "error");
       }
       console.log(user);
     } else {

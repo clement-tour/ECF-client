@@ -17,14 +17,14 @@ const UserManage = ({ user }) => {
 
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
-  const [isAdmin, setIsAdmin] = useState(user.address);
+  const [status, setStatus] = useState(user.address);
 
   async function saveChanges() {
     const newuser = {
       userid: user._id,
       name,
       email,
-      isAdmin,
+      status,
     };
     try {
       setloading(true);
@@ -47,7 +47,7 @@ const UserManage = ({ user }) => {
       userid: user._id,
       name,
       email,
-      isAdmin,
+      status,
     };
     try {
       setloading(true);
@@ -70,7 +70,7 @@ const UserManage = ({ user }) => {
       <td className="text-break">{user._id}</td>
       <td>{user.name}</td>
       <td>{user.email}</td>
-      <td>{user.isAdmin ? "Oui" : "Non"}</td>
+      <td>{user.status}</td>
       <td>
         {" "}
         <button className="btn btn-primary m-1" onClick={handleShow}>
@@ -108,13 +108,12 @@ const UserManage = ({ user }) => {
             aria-label="Default select example"
             onChange={(e) => {
               console.log(e.target.value);
-              setIsAdmin(e.target.value);
+              setStatus(e.target.value);
             }}
           >
-            {/* <option selected>Open this select menu</option> */}
-            <option value={false}>False</option>
-            <option value={true}>True</option>
-            <option value="Three">Three</option>
+            <option value="visiteur">Visiteur</option>
+            <option value="gérant">Gérant</option>
+            <option value="admin">Admin</option>
           </select>
         </Modal.Body>
         <Modal.Footer>
