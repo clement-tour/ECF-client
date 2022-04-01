@@ -7,7 +7,7 @@ import sweetAlert from "sweetalert2";
 
 AOS.init({ duration: 1000 });
 
-const UserManage = ({ user }) => {
+const BookingManage = ({ booking }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -15,63 +15,82 @@ const UserManage = ({ user }) => {
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(false);
 
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
-  const [isAdmin, setIsAdmin] = useState(user.address);
-  const [description, setDescription] = useState(user.description);
+  const [room, setRoom] = useState(booking.room);
+  const [fromDate, setfromDate] = useState(booking.fromDate);
+  const [toDate, settoDate] = useState(booking.toDate);
+  const [status, setstatus] = useState(booking.status);
+
+  console.log(booking);
 
   async function saveChanges() {
-    const newuser = {
-      userid: user._id,
-      name,
-      email,
-      isAdmin,
+    const newbooking = {
+      bookingid: booking._id,
+      roomid: booking.roomid,
+      fromDate,
+      toDate,
+      status,
     };
     try {
       setloading(true);
 
-      const result = await axios.put("/api/users/adduser", newuser);
+      const result = await axios.put("/api/bookings/addbooking", newbooking);
       setloading(false);
       sweetAlert
-        .fire("Félicitations !", "L'hôtel a bien été modifié", "success")
+        .fire(
+          "Félicitations !",
+          "La réservation a bien été modifiée",
+          "success"
+        )
         .then((result) => (window.location.href = "/admin"));
     } catch (error) {
       console.log(error);
       setloading(false);
       seterror(true);
     }
-    console.log(newuser);
+    console.log(newbooking);
   }
 
   async function handleDelete() {
-    const newuser = {
-      userid: user._id,
-      name,
-      email,
-      isAdmin,
+    const newbooking = {
+      bookingid: booking._id,
+      roomid: booking.roomid,
+      room,
+      fromDate,
+      toDate,
+      status,
     };
     try {
       setloading(true);
 
-      const result = await axios.put("/api/users/deleteuser", newuser);
+      const result = await axios.post(
+        "/api/bookings/deletebooking",
+        newbooking
+      );
       setloading(false);
       sweetAlert
-        .fire("Félicitations !", "L'hôtel a bien été supprimé", "success")
+        .fire(
+          "Félicitations !",
+          "La réservation a bien été supprimée",
+          "success"
+        )
         .then((result) => (window.location.href = "/admin"));
     } catch (error) {
       console.log(error);
       setloading(false);
       seterror(true);
     }
-    console.log(newuser);
+    console.log(newbooking);
   }
 
   return (
-    <tr key={user._id}>
-      <td className="text-break">{user._id}</td>
-      <td>{user.name}</td>
-      <td>{user.email}</td>
-      <td>{user.isAdmin ? "Oui" : "Non"}</td>
+    <tr key={booking._id}>
+      <td className="text-break">{booking._id}</td>
+      <td className="text-break">{booking.userid}</td>
+      <td>{booking.room}</td>
+      <td>{booking.fromDate}</td>
+      <td>{booking.toDate}</td>
+      <td>{booking.status}</td>
+
       <td>
         {" "}
         <button className="btn btn-primary m-1" onClick={handleShow}>
@@ -83,34 +102,43 @@ const UserManage = ({ user }) => {
       </td>
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>{user.name}</Modal.Title>
+          <Modal.Title>{booking.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <input
             type="text"
             className="form-control mt-1"
-            defaultValue={user.name}
+            defaultValue={booking.room}
             onChange={(e) => {
               console.log(e.target.value);
-              setName(e.target.value);
+              setRoom(e.target.value);
             }}
           />
           <input
             type="text"
             className="form-control mt-1"
-            defaultValue={user.email}
+            defaultValue={booking.fromDate}
             onChange={(e) => {
               console.log(e.target.value);
-              setEmail(e.target.value);
+              setfromDate(e.target.value);
             }}
           />
           <input
             type="text"
             className="form-control mt-1"
-            defaultValue={user.isAdmin}
+            defaultValue={booking.toDate}
             onChange={(e) => {
               console.log(e.target.value);
-              setIsAdmin(e.target.value);
+              settoDate(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            className="form-control mt-1"
+            defaultValue={booking.status}
+            onChange={(e) => {
+              console.log(e.target.value);
+              setstatus(e.target.value);
             }}
           />
         </Modal.Body>
@@ -127,4 +155,4 @@ const UserManage = ({ user }) => {
   );
 };
 
-export default UserManage;
+export default BookingManage;

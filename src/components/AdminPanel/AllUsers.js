@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Loading from "./Loading";
-import Error from "./Error";
+import Loading from "../Loading";
+import Error from "../Error";
 import UserManage from "./UserManage";
 
 const AllUsers = () => {

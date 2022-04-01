@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
 import Error from "./Error";
+import BookingManage from "./BookingManage";
 
 const AllBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -52,10 +53,14 @@ const AllBookings = () => {
                 <th>Date d'arrivée</th>
                 <th>Date de départ</th>
                 <th>Status</th>
+                <th>Mise à jour</th>
               </tr>
             </thead>
             <tbody>
               {bookings.map((booking) => {
+                return <BookingManage key={booking._id} booking={booking} />;
+              })}
+              {/* {bookings.map((booking) => {
                 return (
                   <tr key={booking._id}>
                     <td className="text-break">{booking._id}</td>
@@ -66,7 +71,7 @@ const AllBookings = () => {
                     <td>{booking.status}</td>
                   </tr>
                 );
-              })}
+              })} */}
             </tbody>
           </table>
         )}

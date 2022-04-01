@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Tabs } from "antd";
 import AllBookings from "../components/AllBookings";
 import AllRooms from "../components/AdminPanel/AllRooms";
-import AllUsers from "../components/AllUsers";
+import AllUsers from "../components/AdminPanel/AllUsers";
 import AddRoom from "../components/AdminPanel/AddRoom";
 import AddHotel from "../components/AdminPanel/AddHotel";
 import AllHotels from "../components/AdminPanel/AllHotel";
@@ -19,8 +19,8 @@ const AdminScreen = () => {
   return (
     <div className="m-4">
       <Tabs defaultActiveKey="1">
-        <TabPane tab="Réservations" key="1">
-          <AllBookings />
+        <TabPane tab="Hôtels" key="1">
+          <AllHotels />
         </TabPane>
         <TabPane tab="Chambres" key="2">
           <AllRooms />
@@ -28,8 +28,8 @@ const AdminScreen = () => {
         <TabPane tab="Utilisateurs" key="4">
           <AllUsers />
         </TabPane>
-        <TabPane tab="Hôtels" key="5">
-          <AllHotels />
+        <TabPane tab="Réservations" key="5">
+          <AllBookings />
         </TabPane>
       </Tabs>
     </div>
