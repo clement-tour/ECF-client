@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Tabs } from "antd";
 import AllBookings from "../components/AllBookings";
-import AllRooms from "../components/AllRooms";
+import AllRooms from "../components/AdminPanel/AllRooms";
 import AllUsers from "../components/AllUsers";
-import AddRoom from "../components/AddRoom";
+import AddRoom from "../components/AdminPanel/AddRoom";
 import AddHotel from "../components/AdminPanel/AddHotel";
 import AllHotels from "../components/AdminPanel/AllHotel";
 
@@ -24,9 +24,6 @@ const AdminScreen = () => {
         </TabPane>
         <TabPane tab="Chambres" key="2">
           <AllRooms />
-        </TabPane>
-        <TabPane tab="Ajouter une chambre" key="3">
-          <AddRoom />
         </TabPane>
         <TabPane tab="Utilisateurs" key="4">
           <AllUsers />

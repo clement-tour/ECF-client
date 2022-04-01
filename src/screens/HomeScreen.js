@@ -74,7 +74,16 @@ const Homescreen = () => {
               "(]"
             )
           ) {
-            availability = true;
+            if (
+              !moment(dates[0].format("YYYY-MM-DD")).isBefore(
+                moment(booking.fromDate, "DD-MM-YYYY").format("YYYY-MM-DD")
+              ) ||
+              !moment(dates[1].format("YYYY-MM-DD")).isAfter(
+                moment(booking.toDate, "DD-MM-YYYY").format("YYYY-MM-DD")
+              )
+            ) {
+              availability = true;
+            }
           }
         }
       }

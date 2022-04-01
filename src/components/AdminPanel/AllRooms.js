@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Loading from "./Loading";
-import Error from "./Error";
+import Loading from "../Loading";
+import Error from "../Error";
 import AddRoom from "./AddRoom";
 import RoomManage from "./RoomManage";
 
@@ -46,7 +46,8 @@ const AllRooms = () => {
         ) : error ? (
           <Error />
         ) : (
-          <div>
+          <div className="mt-3">
+            <h2 className=" text-center">Liste des chambres</h2>
             <table className="table table-bordered table-dark">
               <thead>
                 <tr>

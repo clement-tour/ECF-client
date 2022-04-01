@@ -46,7 +46,8 @@ const AllHotels = () => {
         ) : error ? (
           <Error />
         ) : (
-          <div>
+          <div className="mt-3">
+            <h2 className=" text-center">Liste des hôtels</h2>
             <table className="table table-bordered table-dark">
               <thead>
                 <tr>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
 import Error from "./Error";
+import UserManage from "./UserManage";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
@@ -50,19 +51,13 @@ const AllUsers = () => {
                 <th>Nom</th>
                 <th>Email</th>
                 <th>Administrateur</th>
+                <th>Mise à jour</th>
               </tr>
             </thead>
 
             <tbody>
               {users.map((user) => {
-                return (
-                  <tr key={user._id}>
-                    <td className="text-break">{user._id}</td>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>{user.isAdmin ? "Oui" : "Non"}</td>
-                  </tr>
-                );
+                return <UserManage key={user._id} user={user} />;
               })}
             </tbody>
           </table>
