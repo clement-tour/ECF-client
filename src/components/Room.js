@@ -15,10 +15,10 @@ const Room = ({ room, fromDate, toDate }) => {
 
   return (
     <div data-aos="fade-up" className={`row p-3 ${classes.boxShadow}`}>
-      <div className="col-md-5">
+      <div className="col-md-7">
         <img className={classes.smallImg} src={room.imageurls[0]} alt="room" />
       </div>
-      <div className="col-md-7">
+      <div className="col-md-5">
         <h1 className={classes.roomH1}>{room.name}</h1>
         <p>Nombre de lit : {room.maxcount}</p>
         <p>Téléphone : {room.phonenumber}</p>

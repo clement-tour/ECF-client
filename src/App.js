@@ -1,5 +1,5 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Navbarde from "./components/Navbarde";
 import { Routes, Route } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import BookingScreen from "./screens/BookingScreen";
@@ -11,7 +11,7 @@ import AdminScreen from "./screens/AdminScreen";
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Navbarde />
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/accueil" element={<HomeScreen />} />
